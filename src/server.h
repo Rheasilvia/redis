@@ -995,12 +995,12 @@ struct sharedObjectsStruct {
 
 /* ZSETs use a specialized version of Skiplists */
 typedef struct zskiplistNode {
-    sds ele;
-    double score;
-    struct zskiplistNode *backward;
+    sds ele; //存储字符串类型的数据
+    double score; //得分
+    struct zskiplistNode *backward; //后退指针
     struct zskiplistLevel {
-        struct zskiplistNode *forward;
-        unsigned long span;
+        struct zskiplistNode *forward; //指向本层的下一个节点，尾节点forward为null
+        unsigned long span;//forward指向的节点与本节点之间的元素个数，span值越大，跳过的节点数个数越多
     } level[];
 } zskiplistNode;
 
